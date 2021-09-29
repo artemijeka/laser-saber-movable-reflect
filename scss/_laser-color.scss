@@ -1,0 +1,25 @@
+.laser-color {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  height: 30px;
+
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  &__item {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    &[data-color=green] {
+        background-color: green;
+    }
+    &[data-color=blue] {
+      background-color: blue;
+    }
+    &[data-color=turquoise] {
+      background-color: turquoise;
+    }
+  }
+}

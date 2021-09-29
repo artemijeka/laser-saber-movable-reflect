@@ -1,0 +1,107 @@
+@import "laser-color";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000a;
+  overflow: hidden;
+  cursor: none;
+}
+
+.laser-saber-movable {
+  display: flex;
+  width: 5vh;
+  height: 19vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transform: translate(-50%, -70%);
+  cursor: pointer;
+  transition: transform 400ms;
+  cursor: none;
+
+  position: absolute;
+  &.--right {
+    transform: rotate(-20deg) translate(-50%, -70%);
+  }
+  &.--left {
+    transform: rotate(20deg) translate(-50%, -70%);
+  }
+  &.--rightX2 {
+    transition: transform 200ms;
+    transform: rotate(-30deg) translate(-50%, -70%);
+  }
+  &.--leftX2 {
+    transition: transform 200ms;
+    transform: rotate(30deg) translate(-50%, -70%);
+  }
+
+  &__hilt {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.33);
+    transition: 1100ms;
+    transition-timing-function: ease-in;
+    pointer-events: none;
+    object-fit: contain;
+    user-select: none;
+  }
+  &.--active &__hilt {
+    transition: 1100ms;
+    transition-timing-function: ease-out;
+    filter: brightness(1) drop-shadow(0px 0px 30px rgba(116, 250, 241, 0.2));
+  }
+  &__laser {
+    display: inline-flex;
+    width: 0.8vh;
+    height: 0;
+    border-radius: 0 0 0.8vh 0.8vh;
+    // border-radius: 0 0 1vh 1vh;
+    background-color: rgba(255, 255, 255, 0.75);
+    pointer-events: none;
+    transform-origin: 50% 0%;
+    transform: rotate(180deg) translateX(50%);
+    transition-timing-function: ease-in;
+    transition: 1100ms;
+    animation-delay: 700ms;
+    box-shadow: 0 0 5px #74faf1, 0 0 15px #74faf1, 0 0 30px #74faf1, 0 0 60px #74faf1;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+  }
+  &.--active &__laser {
+    height: 50vh;
+    background-color: rgba(255, 255, 255, 1);
+    transition: 1100ms;
+    animation-name: boom;
+    animation-iteration-count: infinite;
+    transition-timing-function: ease-out;
+    animation-duration: 3100ms;
+    animation-delay: 700ms;
+  }
+}
+
+@keyframes boom {
+  0% {
+    box-shadow: 0 0 5px #74faf1, 0 0 10px #74faf1, 0 0 20px #74faf1, 0 0 40px #74faf1, 0 0 60px #74faf1,
+      0 0 80px rgb(116, 250, 241, 0.4), 0 0 100px rgb(116, 250, 241, 0.3), 0 0 120px rgb(116, 250, 241, 0.2);
+  }
+  42% {
+    box-shadow: 0 0 5px #74faf1, 0 0 15px #74faf1, 0 0 30px #74faf1, 0 0 60px #74faf1;
+  }
+  100% {
+    box-shadow: 0 0 5px #74faf1, 0 0 10px #74faf1, 0 0 20px #74faf1, 0 0 40px #74faf1, 0 0 60px #74faf1,
+      0 0 80px rgb(116, 250, 241, 0.4), 0 0 100px rgb(116, 250, 241, 0.3), 0 0 120px rgb(116, 250, 241, 0.2);
+  }
+}
