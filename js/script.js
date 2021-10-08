@@ -1,8 +1,15 @@
+import {shots} from './_shots.js';
+
 document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  let laserSaber = document.querySelector('.laser-saber-movable');
+
+  shots();
+
+
+
+  let laserSaber = document.querySelector('.laser-saber-movable-reflect');
   let boom = document.querySelector('#boom');
   let laserOpen = false;
 
@@ -57,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // laserSaber.classList.remove('--leftX2');
     } 
 
-    if ((positiveMovementX > 80) && laserOpen) {
+    if ((positiveMovementX > 100) && laserOpen) {
       if (movingLeft) {
         new Audio('./audio/left.mp3').play();
         laserSaber.classList.add('--leftX2');

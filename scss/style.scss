@@ -1,4 +1,5 @@
 @import "laser-color";
+@import "shot";
 
 * {
   margin: 0;
@@ -15,9 +16,11 @@ body {
   background-color: #00000a;
   overflow: hidden;
   cursor: none;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
 }
 
-.laser-saber-movable {
+.laser-saber-movable-reflect {
   display: flex;
   width: 5vh;
   height: 19vh;
